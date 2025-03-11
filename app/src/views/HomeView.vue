@@ -10,11 +10,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import BabyNames from '@/components/BabyNames.vue'
+import BabyNames from '@/components/WebsiteBase.vue'
 const names = ref([])
 
 async function getSAT() {
-  const response = await fetch('https://data.cityofnewyork.us/resource/25th-nujf.json')
+  const response = await fetch('https://data.cityofnewyork.us/resource/25th-nujf.json?$limit=2000')
   let data = await response.json()
   names.value = data
   console.log(data)
