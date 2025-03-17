@@ -1,20 +1,16 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import NamesChart from './views/MaleChart.vue'
-</script>
-
 <template>
-  <header>
-    <div>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/NamesChart">Names</RouterLink>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div>
+    <WebsiteBase></WebsiteBase>
+    <HomeView></HomeView>
+  </div>
 </template>
 
-<style scoped></style>
+<script setup>
+import HomeView from './views/HomeView.vue'
+import MaleChart from './views/MaleChart.vue'
+import FemaleChart from './views/FemaleChart.vue'
+import NameChart from './views/NameChart.vue'
+import WebsiteBase from './components/WebsiteBase.vue'
+</script>
+
+<style lang="scss" scoped></style>

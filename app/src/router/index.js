@@ -12,7 +12,17 @@ const router = createRouter({
     {
       path: '/NamesChart',
       name: 'Names',
+      component: () => import('../views/NameChart.vue'),
+    },
+    {
+      path: '/MaleChart',
+      name: 'Male',
       component: () => import('../views/MaleChart.vue'),
+    },
+    {
+      path: '/FemaleChart',
+      name: 'Female',
+      component: () => import('../views/FemaleChart.vue'),
     },
   ],
 })

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <router-link to="NamesChart"></router-link>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/NamesChart">Names</RouterLink>
+    <RouterLink to="/MaleChart">Males</RouterLink>
+    <RouterLink to="/FemaleChart">Females</RouterLink>
   </div>
 </template>
 
