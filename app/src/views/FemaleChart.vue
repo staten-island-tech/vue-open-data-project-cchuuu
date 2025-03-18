@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <FemaleChart> </FemaleChart>
+  </div>
 </template>
 
 <script setup>

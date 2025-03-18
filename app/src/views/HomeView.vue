@@ -11,7 +11,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import BabyNames from '@/components/WebsiteBase.vue'
 import displayCards from '@/components/displayCards.vue'
 const names = ref([])
 
