@@ -1,16 +1,16 @@
 <template>
   <div class="container flex m-auto justify-center mt-5">
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
-      <RouterLink to="/" class="text-xl m-3">Home</RouterLink>
+      <router-link to="/" class="text-xl m-3">Home</router-link>
     </div>
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
-      <RouterLink to="Names" class="text-xl m-3">Names</RouterLink>
+      <router-link to="NameChart" class="text-xl m-3">Names</router-link>
     </div>
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
-      <RouterLink to="Male" class="text-xl m-3">Male</RouterLink>
+      <router-link to="MaleChart" class="text-xl m-3">Male</router-link>
     </div>
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
-      <RouterLink to="Female" class="text-xl m-3">Female</RouterLink>
+      <router-link to="FemaleChart" class="text-xl m-3">Female</router-link>
     </div>
   </div>
 </template>
