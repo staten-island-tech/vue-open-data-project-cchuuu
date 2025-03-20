@@ -1,43 +1,41 @@
 <template>
   <div>
-    <h2>Male Names Chart</h2>
-    <div style="width: 400px; height: 400px">
-      <Pie :data="chartData" />
+    <h2>Ethnicity Distribution Chart</h2>
+    <div style="width: 500px; height: 400px" v-if="chartData.labels.length > 0">
+      <Bar :data="chartData" />
     </div>
+    <p v-else>Loading data...</p>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { Pie } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  ArcElement, // Import ArcElement for pie chart
+  BarElement,
   CategoryScale,
   LinearScale,
 } from 'chart.js'
 
-// Register chart.js components
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-// Chart data configuration
 const chartData = ref({
   labels: [],
   datasets: [
     {
-      label: 'Male Names',
+      label: 'Ethnicity Distribution',
       data: [],
-      backgroundColor: 'rgba(66, 185, 131, 0.2)', // Background color for the pie chart
-      borderColor: '#42b983', // Border color for slices
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: '#36a2eb',
       borderWidth: 2,
     },
   ],
 })
 
-// Fetch the data
 onMounted(async () => {
   try {
     const response = await fetch(
@@ -45,37 +43,36 @@ onMounted(async () => {
     )
     const responseData = await response.json()
 
-    // Log the data to inspect the structure
-    console.log(responseData)
+    const ethnicityCounts = {}
 
-    const filteredData = responseData.filter((item) => item.gndr === 'MALE')
+    responseData.forEach((item) => {
+      const ethnicity = item.ethnicity
+      const count = parseInt(item.cnt, 10)
 
-    // Log filtered data to verify the structure after filtering
-    console.log(filteredData)
-
-    // Process and set chart data only if the filtered data is valid
-    if (filteredData.length > 0) {
-      const names = filteredData.map((item) => item.nm)
-      const counts = filteredData.map((item) => item.cnt)
-
-      // Ensure that the names and counts arrays are not empty
-      if (names.length > 0 && counts.length > 0) {
-        chartData.value.labels = names
-        chartData.value.datasets[0].data = counts
-      } else {
-        console.warn('No valid names or counts available for the chart')
+      if (ethnicity && !isNaN(count)) {
+        ethnicityCounts[ethnicity] = (ethnicityCounts[ethnicity] || 0) + count
       }
+    })
+
+    const ethnicityLabels = Object.keys(ethnicityCounts)
+    const ethnicityData = Object.values(ethnicityCounts)
+
+    if (ethnicityLabels.length > 0 && ethnicityData.length > 0) {
+      chartData.value.labels = ethnicityLabels
+      chartData.value.datasets[0].data = ethnicityData
     } else {
-      console.warn('No male data available after filtering')
+      chartData.value.labels = ['Asian', 'Black', 'White', 'Hispanic']
+      chartData.value.datasets[0].data = [100, 200, 150, 175]
     }
   } catch (error) {
     console.error('Error fetching data:', error)
+    chartData.value.labels = ['Asian', 'Black', 'White', 'Hispanic']
+    chartData.value.datasets[0].data = [100, 200, 150, 175]
   }
 })
 </script>
 
 <style scoped>
-/* Ensure the container has a specific size */
 div {
   display: flex;
   justify-content: center;
