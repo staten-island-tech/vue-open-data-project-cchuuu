@@ -10,9 +10,9 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/NameChart',
-      name: 'Names',
-      component: () => import('../views/NameChart.vue'),
+      path: '/EthnicityChart',
+      name: 'Ethnicity',
+      component: () => import('../views/EthnicityChart.vue'),
     },
     {
       path: '/MaleChart',

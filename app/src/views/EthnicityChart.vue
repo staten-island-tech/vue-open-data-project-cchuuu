@@ -1,7 +1,8 @@
 <template>
+  <p class="text-center">(Only 500 lines of data)</p>
   <div>
     <h2>Ethnicity Distribution Chart</h2>
-    <div style="width: 500px; height: 400px" v-if="chartData.labels.length > 0">
+    <div style="width: 1000px; height: 700px" v-if="chartData.labels.length > 0">
       <Bar :data="chartData" />
     </div>
     <p v-else>Loading data...</p>
@@ -38,15 +39,13 @@ const chartData = ref({
 
 onMounted(async () => {
   try {
-    const response = await fetch(
-      'https://data.cityofnewyork.us/resource/25th-nujf.json?$limit=1000',
-    )
+    const response = await fetch('https://data.cityofnewyork.us/resource/25th-nujf.json?$limit=500')
     const responseData = await response.json()
 
     const ethnicityCounts = {}
 
     responseData.forEach((item) => {
-      const ethnicity = item.ethnicity
+      const ethnicity = item.ethcty
       const count = parseInt(item.cnt, 10)
 
       if (ethnicity && !isNaN(count)) {

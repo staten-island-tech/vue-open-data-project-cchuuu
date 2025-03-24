@@ -15,7 +15,7 @@ import displayCards from '@/components/displayCards.vue'
 const names = ref([])
 
 async function getNames() {
-  const response = await fetch('https://data.cityofnewyork.us/resource/25th-nujf.json?')
+  const response = await fetch('https://data.cityofnewyork.us/resource/25th-nujf.json?$limit=500')
   let data = await response.json()
   names.value = data
 }

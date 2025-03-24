@@ -4,7 +4,7 @@
       <router-link to="/" class="text-xl m-3">Home</router-link>
     </div>
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
-      <router-link to="NameChart" class="text-xl m-3">Names</router-link>
+      <router-link to="EthnicityChart" class="text-xl m-3">Ethnicity</router-link>
     </div>
     <div class="button border-black border-2 rounded bg-amber-100 m-1">
       <router-link to="MaleChart" class="text-xl m-3">Male</router-link>
