@@ -10,4 +10,4 @@ import { RouterView } from 'vue-router'
 import WebsiteBase from './components/WebsiteBase.vue'
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
